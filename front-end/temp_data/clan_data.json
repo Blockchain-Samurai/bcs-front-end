@@ -1,0 +1,56 @@
+[
+    {
+        "id":0,
+        "name": "Imperial Army",
+        "description": "",
+        "image": "https://blockchainsamurai.io/assets/images/clans/Imperial%20Army%20Placeholder.gif"
+    },
+    {
+        "id":1,
+        "name": "Ronin",
+        "description": "",
+        "image": "https://blockchainsamurai.io/assets/images/clans/Ronin%20Placeholder.gif"
+    },
+    {
+        "id":2,
+        "name": "Lotus Clan",
+        "description": "",
+        "image": "https://blockchainsamurai.io/assets/images/clans/Lotus%20Clan%20Placeholder.gif"
+    },
+    {
+        "id":3,
+        "name": "Temple of the Dragon",
+        "description": "",
+        "image": "https://blockchainsamurai.io/assets/images/clans/Dragon%20Clan%20Placeholder.gif"
+    },
+    {
+        "id":4,
+        "name": "Demons of the Mountain",
+        "description": "",
+        "image": "https://blockchainsamurai.io/assets/images/clans/Demons%20Placeholder.gif"
+    },
+    {
+        "id":5,
+        "name": "Lost Militia",
+        "description": "",
+        "image": "https://blockchainsamurai.io/assets/images/clans/Lost%20Militia%20Placeholder-updated.gif"
+    },
+    {
+        "id":6,
+        "name": "Terracotta Soldiers",
+        "description": "",
+        "image": "https://blockchainsamurai.io/assets/images/clans/Terracotta%20Soldier%20Placeholder.gif"
+    },
+    {
+        "id":7,
+        "name": "Order of the White Snake",
+        "description": "",
+        "image": "https://blockchainsamurai.io/assets/images/clans/White%20Snake%20Placeholder-updated.gif"
+    },
+    {
+        "id":8,
+        "name": "House of the Dancing Fox",
+        "description": "",
+        "image": "https://blockchainsamurai.io/assets/images/clans/Dancing%20Fox%20Placeholder.gif"
+    }
+]
