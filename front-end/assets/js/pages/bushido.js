@@ -69,9 +69,13 @@ $(document).ready(async function() {
 async function getClans(){
     return new Promise(function(res,rej){
       jQuery.ajax({
-        url: "https://blockchainsamurai.io/temp_data/clan_data.json",
+        url: "https://blockchainsamurai.io/api/clan/",
         method: "GET",
         contentType: "application/json; charset=utf-8",
+        body: {
+            "entities": 10,
+            "page": 0
+        },
       }).then(response => {
         res(response);
       }).catch(error => {

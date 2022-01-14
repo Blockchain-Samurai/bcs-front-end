@@ -734,6 +734,7 @@ ul.horizontal-slide li[class*="samurai_slide"]:first-child {
 }
 .samurai_tm_topbar .topbar_inner .logo img{
 	max-width: 150px;
+    margin-bottom: 0.75rem!important;
 }
 .samurai_tm_topbar .wrapper{
 	width: 30px;
@@ -756,7 +757,7 @@ ul.horizontal-slide li[class*="samurai_slide"]:first-child {
 	display: inline-block;
 }
 .samurai_tm_topbar .menu .links ul li:last-child{margin-right: 0px;}
-.samurai_tm_topbar .menu .links ul li a{
+.samurai_tm_topbar .menu .links ul li .samurai_nav_link{
 	text-decoration: none;
 	color: #fff;
 	font-family: "Montserrat";
@@ -766,7 +767,24 @@ ul.horizontal-slide li[class*="samurai_slide"]:first-child {
 	display: inline-block;
 }
 
-.samurai_tm_topbar .menu .links ul li a .first{
+.samurai_tm_topbar .menu .links ul li button{
+	font-family: "Montserrat";
+	font-weight: 600;
+    border-radius: 32px;
+    position: relative;
+	overflow: hidden;
+    display: inline-block;
+    margin-bottom: 0.75rem!important;
+}
+
+.samurai_tm_topbar .menu .links ul li img{
+	width: 45px;
+    height: 45px;
+    margin-bottom: 0.75rem!important;
+    border: 2px solid #dee2e6!important;
+}
+
+.samurai_tm_topbar .menu .links ul li .samurai_nav_link .first{
 	position: absolute;
 	transform: translateY(100%);
 	
@@ -776,7 +794,7 @@ ul.horizontal-slide li[class*="samurai_slide"]:first-child {
 	     -o-transition: all .3s ease;
 	        transition: all .3s ease;
 }
-.samurai_tm_topbar .menu .links ul li a .second{
+.samurai_tm_topbar .menu .links ul li .samurai_nav_link .second{
 	position: relative;
 	display: block;
 	
@@ -786,19 +804,19 @@ ul.horizontal-slide li[class*="samurai_slide"]:first-child {
 	     -o-transition: all .3s ease;
 	        transition: all .3s ease;
 }
-.samurai_tm_topbar .menu .links ul li a:hover .first{
+.samurai_tm_topbar .menu .links ul li .samurai_nav_link:hover .first{
 	transform: translateY(0);
 }
-.samurai_tm_topbar .menu .links ul li a:hover .second{
+.samurai_tm_topbar .menu .links ul li .samurai_nav_link:hover .second{
 	transform: translateY(-100%);
 }
-.samurai_tm_topbar .menu .links ul li.current a .first{
+.samurai_tm_topbar .menu .links ul li.current .samurai_nav_link .first{
 	transform: translateY(0);
 }
-.samurai_tm_topbar .menu .links ul li.current a .second{
+.samurai_tm_topbar .menu .links ul li.current .samurai_nav_link .second{
 	transform: translateY(-100%);
 }
-.samurai_tm_topbar .menu .links ul li.current a{color: #fff;}
+.samurai_tm_topbar .menu .links ul li.current .samurai_nav_link{color: #fff;}
 
 
 /*---------------------------------------------------*/
@@ -953,7 +971,7 @@ ul.horizontal-slide li[class*="samurai_slide"]:first-child {
 	float: left;
 	width: 100%;
 }
-.samurai_tm_mobile_menu .dropdown .dropdown_inner ul li a{
+.samurai_tm_mobile_menu .dropdown .dropdown_inner ul li .samurai_nav_link_mobile{
 	text-decoration: none;
 	color: #fff;
 	display: inline-block;
@@ -961,6 +979,21 @@ ul.horizontal-slide li[class*="samurai_slide"]:first-child {
 	font-family: "Montserrat";
 	font-weight: 500;
 }
+
+.samurai_tm_mobile_menu .dropdown .dropdown_inner ul li button{
+	font-family: "Montserrat";
+	font-weight: 500;
+    border-radius: 32px;
+    padding: 4px 0px;
+}
+
+.samurai_tm_mobile_menu .dropdown .dropdown_inner ul li img{
+	width: 45px;
+    height: 45px;
+    margin-top: 0.75rem!important;
+    border: 2px solid #dee2e6!important;
+}
+
 .samurai_tm_mobile_menu .logo img{max-width: 130px;}
 
 /*---------------------------------------------------*/
@@ -1105,12 +1138,6 @@ li.timeline-item::before {
 /*---------------------------------------------------*/
 /*	SAMURAI MEDIA QUERIES (FOR SMALL DEVICES)
 /*---------------------------------------------------*/
-@media (max-width: 800px) {
-	.samurai_tm_topbar{display: none;}
-	.samurai_tm_topbar_single{display: none;}
-	.samurai_tm_mobile_menu{display: block;}
-	.samurai_tm_mobile_menu_single{display: block;}
-}
 
 @media (max-width: 1200px) {
     ul.horizontal-slide {
@@ -1120,6 +1147,11 @@ li.timeline-item::before {
 }
 
 @media (max-width: 1000px) {
+    .samurai_tm_topbar{display: none;}
+	.samurai_tm_topbar_single{display: none;}
+	.samurai_tm_mobile_menu{display: block;}
+	.samurai_tm_mobile_menu_single{display: block;}
+
     .col-right
     {
         position: relative;
