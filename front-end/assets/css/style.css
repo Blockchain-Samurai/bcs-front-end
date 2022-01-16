@@ -699,6 +699,25 @@ ul.horizontal-slide li[class*="samurai_slide"]:first-child {
 }
 
 /*---------------------------------------------------*/
+/*	USER PROFILE
+/*---------------------------------------------------*/
+
+.samurai_profile_img{
+    width: 6.5rem !important
+}
+
+.samurai_profile_nav .nav-link {
+    color: #4e4e4e;
+}
+
+.samurai_profile_nav .nav-link:hover,
+.samurai_profile_nav .nav-link.active {
+    color: var(--primary) !important;
+}
+
+
+
+/*---------------------------------------------------*/
 /*	SAMURAI TOPBAR
 /*---------------------------------------------------*/
 
