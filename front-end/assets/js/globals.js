@@ -105,6 +105,7 @@ async function isLoggedIn(){
     return new Promise(function(res,rej){
         jQuery.ajax({
             url: "http://127.0.0.1:5501/front-end/temp_data/api-user-profile.json",
+            // url: "https://blockchainsamurai.io/api/user/profile",
             method: "GET",
         }).then(response => {
             res(response);
@@ -114,33 +115,85 @@ async function isLoggedIn(){
       });
 }
 
+async function logUserOut(){
+    return new Promise(function(res,rej){
+        jQuery.ajax({
+            url: "https://blockchainsamurai.io/api/auth/logout",
+            method: "GET",
+        }).then(response => {
+            res(response);
+        }).catch(error => {
+            rej(error);
+        })
+      });
+}
+
+
+$(document.body).on('click', '.oauth-logout',async function(event){
+    console.log('AHHH')
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    await logUserOut().then(res => {
+        window.location.replace("https://blockchainsamurai.io/");
+    }).catch(err => {
+        console.log(err);
+    });
+});
+
 function buildUser(user){
     const oauth_container = $('#oauth-login-container');
     const oauth_container_mobile = $('#oauth-login-container-mobile');
     let prof_pic = user.avatar;
+    let user_profile_mobile;
+    let user_profile;
     if(prof_pic == null) {
         prof_pic = "assets/images/default.jpg";
     }
-    const user_profile = `
-    <div class="btn-group">
-        <img src="assets/images/default.jpg" data-src="${prof_pic}" class="rounded-circle lazyload" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="profile.html"><i class="fas fa-user text-muted mr-3"></i> Profile</a>
-            <div class="dropdown-divider"></div>
-            <a id="oauth-logout" class="dropdown-item" href="#"><i class="fas fa-sign-out-alt text-muted mr-3"></i> Logout</a>
-        </div>
-    </div>
-    `;
-    const user_profile_mobile=`
-    <div class="btn-group">
-        <img src="assets/images/default.jpg" data-src="${prof_pic}" class="rounded-circle lazyload" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <div class="dropdown-menu dropdown-menu-left">
-            <a class="dropdown-item" href="profile.html"><i class="fas fa-user text-muted mr-3"></i> Profile</a>
-            <div class="dropdown-divider"></div>
-            <a id="oauth-logout" class="dropdown-item" href="#"><i class="fas fa-sign-out-alt text-muted mr-3"></i> Logout</a>
+    if(user.role == 2) {
+        user_profile = `
+        <div class="btn-group">
+            <img src="assets/images/default.jpg" data-src="${prof_pic}" class="rounded-circle lazyload" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="profile.html"><i class="fas fa-user text-muted mr-3"></i> Profile</a>
+                <a class="dropdown-item" href="admin.dashboard.html"><i class="fas fa-tools text-muted mr-3"></i> Admin</a>
+                <div class="dropdown-divider"></div>
+                <a class="oauth-logout dropdown-item" href="#"><i class="fas fa-sign-out-alt text-muted mr-3"></i> Logout</a>
             </div>
-    </div>
-    `;
+        </div>
+        `;
+        user_profile_mobile =`
+        <div class="btn-group">
+            <img src="assets/images/default.jpg" data-src="${prof_pic}" class="rounded-circle lazyload" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown-menu dropdown-menu-left">
+                <a class="dropdown-item" href="profile.html"><i class="fas fa-user text-muted mr-3"></i> Profile</a>
+                <a class="dropdown-item" href="admin.dashboard.html"><i class="fas fa-tools text-muted mr-3"></i> Admin</a>
+                <div class="dropdown-divider"></div>
+                <a class="oauth-logout dropdown-item" href="#"><i class="fas fa-sign-out-alt text-muted mr-3"></i> Logout</a>
+                </div>
+        </div>
+        `;
+    } else {
+        user_profile = `
+        <div class="btn-group">
+            <img src="assets/images/default.jpg" data-src="${prof_pic}" class="rounded-circle lazyload" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="profile.html"><i class="fas fa-user text-muted mr-3"></i> Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="oauth-logout dropdown-item" href="#"><i class="fas fa-sign-out-alt text-muted mr-3"></i> Logout</a>
+            </div>
+        </div>
+        `;
+        user_profile_mobile =`
+        <div class="btn-group">
+            <img src="assets/images/default.jpg" data-src="${prof_pic}" class="rounded-circle lazyload" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown-menu dropdown-menu-left">
+                <a class="dropdown-item" href="profile.html"><i class="fas fa-user text-muted mr-3"></i> Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="oauth-logout dropdown-item" href="#"><i class="fas fa-sign-out-alt text-muted mr-3"></i> Logout</a>
+                </div>
+        </div>
+        `;
+    }
 
     oauth_container.html(user_profile);
     oauth_container_mobile.html(user_profile_mobile);
