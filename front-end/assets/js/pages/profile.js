@@ -6,7 +6,7 @@ $(document).ready(async function() {
     await getUser().then(async res => {
         buildProfile(res);
 
-        await getSamurai(3, 0).then(async res => {
+        await getSamurai(res.id, 0).then(async res => {
             buildSamurai(res);
             if(res.length >= 1){
                 await getEvents().then(async res => {
