@@ -36,11 +36,19 @@ Audio.prototype.play = (function(play) {
     };
     })(Audio.prototype.play);
 
-$(function() {
+$(async function() {
+    await isLoggedIn().then(res => {
+        buildUser(res);
+    }).catch(err => {
+        console.log(err);
+        buildLogin();
+    });
 
     var hamburger = $('.hamburger');
 	var mobileMenu = $('.samurai_tm_mobile_menu .dropdown');
-	
+	let page_year = $('#page-year');
+    page_year.html(new Date().getFullYear());
+
 	hamburger.on('click',function(){
 		var element = $(this);
 		
@@ -80,13 +88,131 @@ $(function() {
             $('#audio-toggle').html(`<i id='audio-toggle-icon' class="fas fa-volume-up"></i>`);
             audio[0].play();
         }
-    })
+    });
 })
 
 function preloader(){
     setTimeout(function(){
         $('.preloader').addClass('loaded');
     }, 100);
+}
+
+// -------------------------------------------------
+// -------------  AUTH FUNCTIONS  ------------------
+// -------------------------------------------------
+
+async function isLoggedIn(){
+    return new Promise(function(res,rej){
+        jQuery.ajax({
+            //url: "http://127.0.0.1:5501/front-end/temp_data/api-user-profile.json",
+            url: "https://blockchainsamurai.io/api/user/profile",
+            method: "GET",
+        }).then(response => {
+            res(response);
+        }).catch(error => {
+            rej(error);
+        })
+      });
+}
+
+async function logUserOut(){
+    return new Promise(function(res,rej){
+        jQuery.ajax({
+            url: "https://blockchainsamurai.io/api/auth/logout",
+            method: "GET",
+        }).then(response => {
+            res(response);
+        }).catch(error => {
+            rej(error);
+        })
+      });
+}
+
+
+$(document.body).on('click', '.oauth-logout',async function(event){
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    await logUserOut().then(res => {
+        window.location.replace("https://blockchainsamurai.io/");
+    }).catch(err => {
+        console.log(err);
+    });
+});
+
+function buildUser(user){
+    const oauth_container = $('#oauth-login-container');
+    const oauth_container_mobile = $('#oauth-login-container-mobile');
+    let prof_pic = user.avatar;
+    let user_profile_mobile;
+    let user_profile;
+    if(prof_pic == null) {
+        prof_pic = "assets/images/default.jpg";
+    }
+    if(user.role == 2) {
+        user_profile = `
+        <div class="btn-group">
+            <img src="assets/images/default.jpg" data-src="${prof_pic}" class="rounded-circle lazyload" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="profile.html"><i class="fas fa-user text-muted mr-3"></i> Profile</a>
+                <a class="dropdown-item" href="admin.dashboard.html"><i class="fas fa-tools text-muted mr-3"></i> Admin</a>
+                <div class="dropdown-divider"></div>
+                <a class="oauth-logout dropdown-item" href="#"><i class="fas fa-sign-out-alt text-muted mr-3"></i> Logout</a>
+            </div>
+        </div>
+        `;
+        user_profile_mobile =`
+        <div class="btn-group">
+            <img src="assets/images/default.jpg" data-src="${prof_pic}" class="rounded-circle lazyload" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown-menu dropdown-menu-left">
+                <a class="dropdown-item" href="profile.html"><i class="fas fa-user text-muted mr-3"></i> Profile</a>
+                <a class="dropdown-item" href="admin.dashboard.html"><i class="fas fa-tools text-muted mr-3"></i> Admin</a>
+                <div class="dropdown-divider"></div>
+                <a class="oauth-logout dropdown-item" href="#"><i class="fas fa-sign-out-alt text-muted mr-3"></i> Logout</a>
+                </div>
+        </div>
+        `;
+    } else {
+        user_profile = `
+        <div class="btn-group">
+            <img src="assets/images/default.jpg" data-src="${prof_pic}" class="rounded-circle lazyload" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="profile.html"><i class="fas fa-user text-muted mr-3"></i> Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="oauth-logout dropdown-item" href="#"><i class="fas fa-sign-out-alt text-muted mr-3"></i> Logout</a>
+            </div>
+        </div>
+        `;
+        user_profile_mobile =`
+        <div class="btn-group">
+            <img src="assets/images/default.jpg" data-src="${prof_pic}" class="rounded-circle lazyload" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown-menu dropdown-menu-left">
+                <a class="dropdown-item" href="profile.html"><i class="fas fa-user text-muted mr-3"></i> Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="oauth-logout dropdown-item" href="#"><i class="fas fa-sign-out-alt text-muted mr-3"></i> Logout</a>
+                </div>
+        </div>
+        `;
+    }
+
+    oauth_container.html(user_profile);
+    oauth_container_mobile.html(user_profile_mobile);
+    $("img.lazyload").lazyload();
+}
+
+function buildLogin(){
+    const oauth_container = $('#oauth-login-container');
+    const oauth_container_mobile = $('#oauth-login-container-mobile');
+    const login_button = `
+    <button class="btn btn-light pr-4 pl-4 mb-2" onClick="window.location='https://discord.com/api/oauth2/authorize?client_id=912087736037568523&redirect_uri=https%3A%2F%2Fblockchainsamurai.io%2Fapi%2Fauth%2Fdiscord%2Fredirect&response_type=code&scope=identify'" type="button">
+        Login
+    </button>`;
+    const login_button_mobile = `
+    <button onClick="window.location='https://discord.com/api/oauth2/authorize?client_id=912087736037568523&redirect_uri=https%3A%2F%2Fblockchainsamurai.io%2Fapi%2Fauth%2Fdiscord%2Fredirect&response_type=code&scope=identify'" type="button" class="btn btn-outline-light pr-3 pl-3 mt-2">
+        Login
+    </button>`;
+
+    oauth_container.html(login_button);
+    oauth_container_mobile.html(login_button_mobile);
 }
 
 // -------------------------------------------------
@@ -168,22 +294,5 @@ if (typeof OverlayScrollbars !== 'undefined') {
         return;
     }
     let scrollByCount = new ScrollbarByCount(el, {sizeAutoCapable:false});
-    });
-}
-
-
-function imagePreload(imageArray){
-    imageArray.forEach(e => {
-        let imgPreload = new Image();
-        imgPreload.src = e.path;
-        //check if the image is already cached:
-        if (imgPreload.complete || imgPreload.readyState === 4) {
-            //image loaded:
-            //your code here to insert image into page
-            $(e.id).css("background",`url(${imgPreload.src})`);
-        } else {
-            //go fetch the image:
-            $(e.id).css("background",`url(${e.path})`);
-        }
     });
 }

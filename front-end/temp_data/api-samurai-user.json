@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "The Faceless Man",
+        "image": "https://blockchainsamurai.io/assets/images/1.png",
+        "description": "test samurai descirption beep boop",
+        "role": 0,
+        "rarity": 10,
+        "clan": {
+            "id": 1,
+            "name": "Ronin",
+            "description": "",
+            "image": "https://blockchainsamurai.io/assets/images/clans/Ronin%20Placeholder.gif"
+        }
+    },
+    {
+        "id": 3,
+        "name": "Delete Me",
+        "image": "https://blockchainsamurai.io/assets/images/1.png",
+        "description": "test samurai descirption beep boop",
+        "role": 0,
+        "rarity": 0,
+        "clan": {
+            "id": 2,
+            "name": "Lotus Clan",
+            "description": "",
+            "image": "https://blockchainsamurai.io/assets/images/clans/Lotus%20Clan%20Placeholder.gif"
+        }
+    },
+    {
+        "id": 5,
+        "name": "Test Samurai",
+        "image": "https://blockchainsamurai.io/assets/images/1.png",
+        "description": "test samurai descirption beep boop",
+        "role": 0,
+        "rarity": 5,
+        "clan": {
+            "id": 2,
+            "name": "Lotus Clan",
+            "description": "",
+            "image": "https://blockchainsamurai.io/assets/images/clans/Lotus%20Clan%20Placeholder.gif"
+        }
+    }
+]
