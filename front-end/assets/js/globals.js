@@ -104,8 +104,8 @@ function preloader(){
 async function isLoggedIn(){
     return new Promise(function(res,rej){
         jQuery.ajax({
-            url: "http://127.0.0.1:5501/front-end/temp_data/api-user-profile.json",
-            //url: "https://blockchainsamurai.io/api/user/profile",
+            //url: "http://127.0.0.1:5501/front-end/temp_data/api-user-profile.json",
+            url: "https://blockchainsamurai.io/api/user/profile",
             method: "GET",
         }).then(response => {
             res(response);
@@ -130,7 +130,6 @@ async function logUserOut(){
 
 
 $(document.body).on('click', '.oauth-logout',async function(event){
-    console.log('AHHH')
     event.stopPropagation();
     event.stopImmediatePropagation();
     await logUserOut().then(res => {

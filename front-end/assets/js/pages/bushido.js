@@ -66,7 +66,7 @@ $(document).ready(async function() {
 // --------------  AJAX REQUESTS  ------------------
 // -------------------------------------------------
 
-async function getClans(){
+async function getClans(page){
     return new Promise(function(res,rej){
       jQuery.ajax({
         url: "https://blockchainsamurai.io/api/clan/",

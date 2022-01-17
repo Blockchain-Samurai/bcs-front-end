@@ -172,6 +172,19 @@ section.parallax_header img#header00
     overflow: hidden;
 }
 
+.video-header-profile {
+    padding-top: 10%;
+    padding-bottom: 10%;
+    position: relative;
+    background-repeat:no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    background-position:center;
+    overflow: hidden;
+}
+
 .video-background {
     position: absolute;
     top: 50%;
@@ -1258,6 +1271,15 @@ li.timeline-item::before {
     }
     .video-header-roadmap {
         background-image:url('../images/roadmap_fallback.png');
+        background-repeat:no-repeat;
+        -webkit-background-size:cover;
+        -moz-background-size:cover;
+        -o-background-size:cover;
+        background-size:cover;
+        background-position:center;
+    }
+    .video-header-profile {
+        background-image:url('../images/profile_fallback.png');
         background-repeat:no-repeat;
         -webkit-background-size:cover;
         -moz-background-size:cover;

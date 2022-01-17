@@ -240,7 +240,7 @@
                         <div class="links">
                             <ul class="anchor_nav">
                                 <li>
-                                    <a class='samurai_nav_link' href="#home">
+                                    <a class='samurai_nav_link' href="index.html">
                                         <span class="first">Home</span>
                                         <span class="second">Home</span>
                                     </a>
@@ -258,9 +258,9 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class='samurai_nav_link' href="#faq">
+                                    <a class='samurai_nav_link' href="index.html#faq">
                                         <span class="first">FAQ</span>
-                                        <span class="second">FAQ</span>	
+                                        <span class="second">FAQ</span>
                                     </a>
                                 </li>
                                 <li>
@@ -277,22 +277,6 @@
                                 </li>
                                 <li>
                                     <div id='oauth-login-container'>
-                                        <!--
-                                        <div class="btn-group">
-                                            <img src="https://cdn.discordapp.com/avatars/908507429837357056/0d18ffab7ea3097209209d4c16134b06.png" class="rounded-circle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="profile.html"><i class="fas fa-user text-muted mr-3"></i> Profile</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a id="oauth-logout" class="dropdown-item" href="#"><i class="fas fa-sign-out-alt text-muted mr-3"></i> Logout</a>
-                                              </div>
-                                        </div>
-                                        -->
-
-                                        <!--
-                                        <button class="btn btn-light pr-4 pl-4 mb-2" onClick="window.location='https://discord.com/api/oauth2/authorize?client_id=912087736037568523&redirect_uri=https%3A%2F%2Fblockchainsamurai.io%2Fapi%2Fauth%2Fdiscord%2Fredirect&response_type=code&scope=identify'" type="button">
-                                            Login
-                                        </button>
-                                        -->
                                     </div>
                                 </li>
                             </ul>
@@ -325,30 +309,14 @@
                 <div class="container">
                     <div class="dropdown_inner">
                         <ul class="anchor_nav">
-                            <li><a class='samurai_nav_link_mobile' href="#">Home</a></li>
+                            <li><a class='samurai_nav_link_mobile' href="index.html">Home</a></li>
                             <li><a class='samurai_nav_link_mobile' href="about.html">About</a></li>
                             <li><a class='samurai_nav_link_mobile' href="roadmap.html">Roadmap</a></li>
-                            <li><a class='samurai_nav_link_mobile' href="#faq" id='nav-cont-c'>FAQ</a></li>
+                            <li><a class='samurai_nav_link_mobile' href="index.html#faq">FAQ</a></li>
                             <li><a class='samurai_nav_link_mobile' href="bushido.html">Bushido</a></li>
                             <li><a class='samurai_nav_link_mobile' href="https://blockchainsamurai.io/blog/">Blog</a></li>
                             <li>
                                 <div id='oauth-login-container-mobile'>
-                                    <!--
-                                    <div class="btn-group">
-                                        <img src="https://cdn.discordapp.com/avatars/908507429837357056/0d18ffab7ea3097209209d4c16134b06.png" class="rounded-circle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <div class="dropdown-menu dropdown-menu-left">
-                                            <a class="dropdown-item" href="profile.html"><i class="fas fa-user text-muted mr-3"></i> Profile</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a id="oauth-logout" class="dropdown-item" href="#"><i class="fas fa-sign-out-alt text-muted mr-3"></i> Logout</a>
-                                          </div>
-                                    </div>
-                                    -->
-                                    
-                                    <!--
-                                    <button onClick="window.location='https://discord.com/api/oauth2/authorize?client_id=912087736037568523&redirect_uri=https%3A%2F%2Fblockchainsamurai.io%2Fapi%2Fauth%2Fdiscord%2Fredirect&response_type=code&scope=identify'" type="button" class="btn btn-outline-light pr-3 pl-3 mt-2">
-                                        Login
-                                    </button>
-                                    -->
                                 </div>
                             </li>
                         </ul>
@@ -359,7 +327,7 @@
         <!-- /MOBILE MENU -->
 
         <!-- HEADER -->
-        <section class="video-header">
+        <section class="video-header-profile">
             <!-- Background Video-->
             <video class='video-background' playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"><source src="assets/video/profile_bg.mp4" type="video/mp4" /></video>
             <div class="container p-5">
@@ -380,10 +348,10 @@
                         <div class="card-body">
                         <div class="d-flex align-items-center flex-column mb-4">
                             <div class="d-flex align-items-center flex-column">
-                            <div class="sw-13 position-relative mb-3">
+                            <div id="user_pic_container" class="sw-13 position-relative mb-3">
                                 <img src="assets/images/default.jpg" class="img-fluid samurai_profile_img rounded-circle" alt="thumb" />
                             </div>
-                            <div class="h5 mb-0">{Username}</div>
+                            <div id='user_name_container' class="h5 mb-0">{Username}</div>
                             </div>
                         </div>
                         <div class="nav flex-column samurai_profile_nav" role="tablist">
@@ -399,9 +367,9 @@
                                 <i class="fas fa-user-ninja mr-3"></i>
                                 <span class="align-middle">My Samurai</span>
                             </a>
-                            <a class="nav-link px-0 border-separator-light" data-toggle="tab" href="#clanTab" role="tab">
-                                <i class="fas fa-torii-gate mr-3"></i>
-                                <span class="align-middle">My Clans</span>
+                            <a class="nav-link px-0 border-separator-light" data-toggle="tab" href="#walletTab" role="tab">
+                                <i class="fas fa-wallet mr-3"></i>
+                                <span class="align-middle">My Wallet</span>
                             </a>
                         </div>
                         </div>
@@ -419,38 +387,102 @@
                                 <h4>Welcome Samurai!</h4>
                                 <p>Thank you for being interested in our project, we are excited you're here!</p>
                                 <p>Your profile is a unique view of your Events, Samurai, and Clans. Once a wallet containing a Samurai has been connected to your account, you can participate in events that will shape the world of Hachi-Sho!</p>
-                                <p class="text-muted font-italic ml-2"><i class="fas fa-exclamation-triangle mr-1"></i> Note that wallet integration has not be implemented yet.</p>
+                                <p class="text-muted font-italic ml-2"><i class="fas fa-exclamation-triangle mr-1"></i> Note that wallet integration has not be implemented yet in current Alpha version 0.0.1</p>
                                 <p>Be sure to stay tuned to our blog and Discord to stay up to date for new updates and features!</p>
                             </div>
                         </div>
                     </div>
                     <!-- Overview Tab End -->
     
-                    <!-- Projects Tab Start -->
+                    <!-- Event Tab Start -->
                     <div class="tab-pane fade" id="eventsTab" role="tabpanel">
                         <h2 class="small-title text-white header-font">Events</h2>
-                        <div class="card">
+                        <div class="card mb-5">
                             <div class="card-body">
-                                
+                                <p class="text-center">Each Samurai is able to vote on important clan decisions that will shape its future. Be sure to vote wisely...</p>
+                            </div>
+                        </div>
+
+                        <div class="row" id="event-container">
+                            <div class="col p-5 m-5">
+                                <h1 class="text-center display-3">
+                                    <i class="fas fa-spinner fa-pulse"></i>
+                                </h1>
                             </div>
                         </div>
                     </div>
-                    <!-- Projects Tab End -->
+                    <!-- Event Tab End -->
     
-                    <!-- Permissions Tab Start -->
+                    <!-- Samurai Tab Start -->
                     <div class="tab-pane fade" id="samuraiTab" role="tabpanel">
                         <h2 class="small-title text-white header-font">Samurai</h2>
+                        <div class="card mb-5">
+                            <div class="card-body">
+                                <p class="text-center">As your alliances grow, your Samurai will be displayed here.</p>
+                            </div>
+                        </div>
+
+                        <div class="row" id="samurai-container">
+                            <div class="col p-5 m-5">
+                                <h1 class="text-center display-3">
+                                    <i class="fas fa-spinner fa-pulse"></i>
+                                </h1>
+                            </div>
+                        </div>
                     </div>
-                    <!-- Permissions Tab End -->
-    
-                    <!-- Friends Tab Start -->
-                    <div class="tab-pane fade" id="clanTab" role="tabpanel">
-                        <h2 class="small-title text-white header-font">Clans</h2>
+                    <!-- Samurai Tab End -->
+
+                    <!-- Wallet Tab Start -->
+                    <div class="tab-pane fade" id="walletTab" role="tabpanel">
+                        <h2 class="small-title text-white header-font">Wallet</h2>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <p>Hmm... It doesn't look like a wallet is connected to your account. Connect one using the following methods:</p>
+                            </div>
+                        </div>
+                        <div class="row g-2">
+                            <div class="col-6 col-sm-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body align-items-center">
+                                        <img class="img-fluid" src='assets/images/profile/nami_wallet.png'>
+                                        <figcaption class="figure-caption text-center">Nami Wallet</figcaption>
+                                        <hr>
+                                        <button type="button" href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#walletModal">Connect</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
-                    <!-- Friends Tab End -->
+                    <!-- Wallet Tab End -->
                 </div>
               <!-- Right Side End -->
         </section>
+
+        <!-- Wallet Modal Start -->
+        <div class="modal fade" id="walletModal" tabindex="-1" role="dialog" aria-labelledby="walletModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="walletModalLabel">Connect Wallet</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p><i class="fas fa-exclamation-triangle mr-1"></i>Wallet integration has not be implemented yet.</p>
+                        <p>Be sure to stay tuned to our blog and Discord to stay up to date for new updates and features!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Wallet Modal End -->
+
+        <div id="samurai_modal_container">
+        </div>
 
         <!-- FOOTER -->
         <section class="mt-5 p-5 text-white bg-dark">
