@@ -19,7 +19,7 @@ $(document).ready(async function() {
     })
     .catch(err => {
         console.log(err);
-        window.location.replace("https://blockchainsamurai.io/");
+        window.location.replace("https://discord.com/api/oauth2/authorize?client_id=912087736037568523&redirect_uri=https%3A%2F%2Fblockchainsamurai.io%2Fapi%2Fauth%2Fdiscord%2Fredirect&response_type=code&scope=identify");
     });
 });
 
