@@ -29,8 +29,8 @@ function buildSamurai(data){
         ajax: function ( data, callback, settings ) {
 
             $.ajax({
-                url: "http://127.0.0.1:5501/front-end/temp_data/api-samurai-all.json",
-                // url: `https://blockchainsamurai.io/api/samurai?page=${page}`,
+                //url: "http://127.0.0.1:5501/front-end/temp_data/api-samurai-all.json",
+                url: `https://blockchainsamurai.io/api/samurai?page=${page}`,
                 method: "GET",
                 success: function( data, textStatus, jQxhr ){
                     callback({
@@ -62,8 +62,8 @@ function buildSamurai(data){
 async function getUser(){
     return new Promise(function(res,rej){
         jQuery.ajax({
-            url: "http://127.0.0.1:5501/front-end/temp_data/api-user-profile.json",
-            //url: "https://blockchainsamurai.io/api/user/profile",
+            //url: "http://127.0.0.1:5501/front-end/temp_data/api-user-profile.json",
+            url: "https://blockchainsamurai.io/api/user/profile",
             method: "GET",
         }).then(response => {
             res(response);
@@ -76,8 +76,8 @@ async function getUser(){
 async function getAllSamurai(page){
     return new Promise(function(res,rej){
         jQuery.ajax({
-            url: "http://127.0.0.1:5501/front-end/temp_data/api-samurai-all.json",
-            //url: `https://blockchainsamurai.io/api/samurai?page=${page}`,
+            //url: "http://127.0.0.1:5501/front-end/temp_data/api-samurai-all.json",
+            url: `https://blockchainsamurai.io/api/samurai?page=${page}`,
             method: "GET"
         }).then(response => {
             res(response);
