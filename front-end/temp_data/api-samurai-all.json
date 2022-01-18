@@ -1,0 +1,64 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "The Faceless Man",
+            "image": "https://blockchainsamurai.io/assets/images/1.png",
+            "description": "",
+            "role": 0,
+            "rarity": 10,
+            "user": {
+                "id": 1,
+                "tag": "Samurai Ahiru#7626",
+                "avatar": "https://cdn.discordapp.com/avatars/908507429837357056/0d18ffab7ea3097209209d4c16134b06.png"
+            },
+            "clan": {
+                "id": 1,
+                "name": "Ronin",
+                "description": "",
+                "image": "https://blockchainsamurai.io/assets/images/clans/Ronin%20Placeholder.gif"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Delete Me",
+            "image": "https://blockchainsamurai.io/assets/images/1.png",
+            "description": "",
+            "role": 0,
+            "rarity": 0,
+            "user": {
+                "id": 1,
+                "tag": "Samurai Ahiru#7626",
+                "avatar": "https://cdn.discordapp.com/avatars/908507429837357056/0d18ffab7ea3097209209d4c16134b06.png"
+            },
+            "clan": {
+                "id": 2,
+                "name": "Lotus Clan",
+                "description": "",
+                "image": "https://blockchainsamurai.io/assets/images/clans/Lotus%20Clan%20Placeholder.gif"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Test Samurai",
+            "image": "https://blockchainsamurai.io/assets/images/1.png",
+            "description": "test samurai descirption beep boop",
+            "role": 5,
+            "rarity": 5,
+            "user": {
+                "id": 5,
+                "tag": "Samurai Kaze#1239",
+                "avatar": "https://cdn.discordapp.com/avatars/908241224396341258/9a58829d65c8adebdba5d2d6fea8f032.png"
+            },
+            "clan": {
+                "id": 2,
+                "name": "Lotus Clan",
+                "description": "",
+                "image": "https://blockchainsamurai.io/assets/images/clans/Lotus%20Clan%20Placeholder.gif"
+            }
+        }
+    ],
+    "samurai_data_total": {
+        "total": "3"
+    }
+}

@@ -185,10 +185,10 @@
         <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
         <link rel="manifest" href="assets/favicon/manifest.json">
         
-
         <!-- STYLES -->
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -198,22 +198,7 @@
         <script src="assets/js/vendor/fontawesome-5.15.4.js"></script>
         <!-- /STYLE -->
 
-        <!-- GOOGLE VENDOR -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-MLGZTF3');</script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-R920RH3Y0L"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-R920RH3Y0L');
-        </script>
-        <!-- /GOOGLE VENDOR -->
-
-        <title>Blockchain Samurai | My Profile</title>
+        <title>Blockchain Samurai | Admin Dashboard</title>
     </head>
     <body>
         <!-- PRELOADER -->
@@ -258,9 +243,9 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class='samurai_nav_link' href="index.html#faq">
+                                    <a class='samurai_nav_link' href="#faq">
                                         <span class="first">FAQ</span>
-                                        <span class="second">FAQ</span>
+                                        <span class="second">FAQ</span>	
                                     </a>
                                 </li>
                                 <li>
@@ -312,7 +297,7 @@
                             <li><a class='samurai_nav_link_mobile' href="index.html">Home</a></li>
                             <li><a class='samurai_nav_link_mobile' href="about.html">About</a></li>
                             <li><a class='samurai_nav_link_mobile' href="roadmap.html">Roadmap</a></li>
-                            <li><a class='samurai_nav_link_mobile' href="index.html#faq">FAQ</a></li>
+                            <li><a class='samurai_nav_link_mobile' href="#faq" id='nav-cont-c'>FAQ</a></li>
                             <li><a class='samurai_nav_link_mobile' href="bushido.html">Bushido</a></li>
                             <li><a class='samurai_nav_link_mobile' href="https://blockchainsamurai.io/blog/">Blog</a></li>
                             <li>
@@ -332,157 +317,104 @@
             <video class='video-background' playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"><source src="assets/video/profile_bg.mp4" type="video/mp4" /></video>
             <div class="container p-5">
                 <div class="text-center text-white mx-auto">
-                    <h1 class="display-1 header-font harsh-text-shadow" style="font-size:min(max(4rem, 4vw), 6rem);">Welcome Home</h1>
-                    <h1 class="display-1 header-font harsh-text-shadow" style="font-size:min(max(4rem, 4vw), 6rem);">Samurai</h1>
+                    <h1 class="display-1 header-font harsh-text-shadow" style="font-size:min(max(4rem, 4vw), 6rem);">Admin Dashboard</h1>
                 </div>
             </div>
         </section>
         <!-- /HEADER -->
 
-        <section class="mt-5 container">
-                <div class="row">
-                    <!-- Left Side Start -->
-                    <div class="col-12 col-xl-4 col-xxl-3">
-                    <!-- User Card Start -->
-                    <div class="card mb-5">
-                        <div class="card-body">
-                        <div class="d-flex align-items-center flex-column mb-4">
-                            <div class="d-flex align-items-center flex-column">
-                            <div id="user_pic_container" class="sw-13 position-relative mb-3">
-                                <img src="assets/images/default.jpg" class="img-fluid samurai_profile_img rounded-circle" alt="thumb" />
-                            </div>
-                            <div id='user_name_container' class="h5 mb-0">{Username}</div>
-                            </div>
-                        </div>
-                        <div class="nav flex-column samurai_profile_nav" role="tablist">
-                            <a class="nav-link active px-0 border-bottom border-separator-light" data-toggle="tab" href="#overviewTab" role="tab">
-                                <i class="fas fa-columns mr-3"></i>
-                                <span class="align-middle">Overview</span>
-                            </a>
-                            <a class="nav-link px-0 border-bottom border-separator-light" data-toggle="tab" href="#eventsTab" role="tab">
-                                <i class="fas fa-flag mr-3"></i>
-                                <span class="align-middle">Events</span>
-                            </a>
-                            <a class="nav-link px-0 border-bottom border-separator-light" data-toggle="tab" href="#samuraiTab" role="tab">
-                                <i class="fas fa-user-ninja mr-3"></i>
-                                <span class="align-middle">My Samurai</span>
-                            </a>
-                            <a class="nav-link px-0 border-separator-light" data-toggle="tab" href="#walletTab" role="tab">
-                                <i class="fas fa-wallet mr-3"></i>
-                                <span class="align-middle">My Wallet</span>
-                            </a>
-                        </div>
-                        </div>
-                    </div>
-                    <!-- User Card End -->
-                </div>
-                <!-- Left Side End -->
-                <!-- Right Side Start -->
-                <div class="col-12 col-xl-8 col-xxl-9 mb-5 tab-content">
-                    <!-- Overview Tab Start -->
-                    <div class="tab-pane fade show active" id="overviewTab" role="tabpanel">
-                        <h2 class="small-title text-white header-font">Overview</h2>
+        <section>
+            <div class="container mt-5">
+                <h2 class="small-title text-white header-font">Users</h2>
+                <div class="row mb-5">
+                    <div class="col-12 col-xl-8 col-xxl-8 mb-5">
                         <div class="card">
                             <div class="card-body">
-                                <h4>Welcome Samurai!</h4>
-                                <p>Thank you for being interested in our project, we are excited you're here!</p>
-                                <p>Your profile is a unique view of your Events, Samurai, and Clans. Once a wallet containing a Samurai has been connected to your account, you can participate in events that will shape the world of Hachi-Sho!</p>
-                                <p class="text-muted font-italic ml-2"><i class="fas fa-exclamation-triangle mr-1"></i> Note that wallet integration has not be implemented yet in current Alpha version 0.0.1</p>
-                                <p>Be sure to stay tuned to our blog and Discord to stay up to date for new updates and features!</p>
+                                <h5 class="card-title">All Users</h5>
+                                <div id="all_users_table"></div>
                             </div>
                         </div>
                     </div>
-                    <!-- Overview Tab End -->
-    
-                    <!-- Event Tab Start -->
-                    <div class="tab-pane fade" id="eventsTab" role="tabpanel">
-                        <h2 class="small-title text-white header-font">Events</h2>
-                        <div class="card mb-5">
+                    <div class="col-12 col-xl-4 col-xxl-4 mb-5">
+                        <div class="card">
                             <div class="card-body">
-                                <p class="text-center">Each Samurai is able to vote on important clan decisions that will shape its future. Be sure to vote wisely...</p>
-                            </div>
-                        </div>
-
-                        <div class="row" id="event-container">
-                            <div class="col p-5 m-5">
-                                <h1 class="text-center display-3">
-                                    <i class="fas fa-spinner fa-pulse"></i>
-                                </h1>
+                                <h5 class="card-title">Users Joined</h5>
+                                <canvas id="users_joined" width="400" height="auto"></canvas>
                             </div>
                         </div>
                     </div>
-                    <!-- Event Tab End -->
-    
-                    <!-- Samurai Tab Start -->
-                    <div class="tab-pane fade" id="samuraiTab" role="tabpanel">
-                        <h2 class="small-title text-white header-font">Samurai</h2>
-                        <div class="card mb-5">
+                    <div class="col-12 col-xl-12 col-xxl-12 mb-5">
+                        <div class="card">
                             <div class="card-body">
-                                <p class="text-center">As your alliances grow, your Samurai will be displayed here.</p>
-                            </div>
-                        </div>
-
-                        <div class="row" id="samurai-container">
-                            <div class="col p-5 m-5">
-                                <h1 class="text-center display-3">
-                                    <i class="fas fa-spinner fa-pulse"></i>
-                                </h1>
+                                <h5 class="card-title">All Users</h5>
+                                <div id="all_users_table"></div>
                             </div>
                         </div>
                     </div>
-                    <!-- Samurai Tab End -->
-
-                    <!-- Wallet Tab Start -->
-                    <div class="tab-pane fade" id="walletTab" role="tabpanel">
-                        <h2 class="small-title text-white header-font">Wallet</h2>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <p>Hmm... It doesn't look like a wallet is connected to your account. Connect one using the following methods:</p>
-                            </div>
-                        </div>
-                        <div class="row g-2">
-                            <div class="col-6 col-sm-6 col-lg-3">
-                                <div class="card">
-                                    <div class="card-body align-items-center">
-                                        <img class="img-fluid" src='assets/images/profile/nami_wallet.png'>
-                                        <figcaption class="figure-caption text-center">Nami Wallet</figcaption>
-                                        <hr>
-                                        <button type="button" href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#walletModal">Connect</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <!-- Wallet Tab End -->
                 </div>
-              <!-- Right Side End -->
-        </section>
 
-        <!-- Wallet Modal Start -->
-        <div class="modal fade" id="walletModal" tabindex="-1" role="dialog" aria-labelledby="walletModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="walletModalLabel">Connect Wallet</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                <h2 class="small-title text-white header-font">Samurai</h2>
+                <div class="row">
+                    <div class="col-12 col-xl-4 col-xxl-4 mb-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Create Samurai</h5>
+                                <canvas id="users_joined" width="400" height="auto"></canvas>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <p><i class="fas fa-exclamation-triangle mr-1"></i>Wallet integration has not be implemented yet.</p>
-                        <p>Be sure to stay tuned to our blog and Discord to stay up to date for new updates and features!</p>
+                    <div class="col-12 col-xl-8 col-xxl-8 mb-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">All Samurai</h5>
+                                <table id="samurai_table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Rarity</th>
+                                            <th>Clan Name</th>
+                                            <th>Username</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Rarity</th>
+                                            <th>Clan Name</th>
+                                            <th>Username</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+
+                <h2 class="small-title text-white header-font">Clans</h2>
+                <div class="row">
+                    <div class="col-12 col-xl-4 col-xxl-4 mb-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Create Clan</h5>
+                                <canvas id="users_joined" width="400" height="auto"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-8 col-xxl-8 mb-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">All Clans</h5>
+                                <div id="all_users_table"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Wallet Modal End -->
-
-        <div id="samurai_modal_container">
-        </div>
+        </section>
 
         <!-- FOOTER -->
         <section class="mt-5 p-5 text-white bg-dark">
@@ -528,14 +460,18 @@
 
         <!-- VENDOR SCRIPTS -->
         <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+        <script src="assets/js/vendor/jquery.cookie.min.js"></script>
         <script src="assets/js/vendor/popper.min.js"></script>
         <script src="assets/js/vendor/bootstrap.min.js"></script>
+        <script src="assets/js/vendor/moment.min.js"></script>
         <script src="assets/js/vendor/lazyload.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
         <!-- /VENDOR SCRIPTS -->
         <!-- PAGE SCRIPTS -->
         <script src="assets/js/plugins.js"></script>
         <script src="assets/js/globals.js"></script>
-        <script src="assets/js/pages/profile.js"></script>
+        <script src="assets/js/pages/admin.dashboard.js"></script>
         <!-- /PAGE SCRIPTS -->
     </body>
 </html>

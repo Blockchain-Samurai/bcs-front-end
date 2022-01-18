@@ -1,0 +1,35 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "joinedAt": "2022-01-17T14:30:00.000Z",
+            "tag": "Samurai Ahiru#7626",
+            "avatar": "https://cdn.discordapp.com/avatars/908507429837357056/0d18ffab7ea3097209209d4c16134b06.png",
+            "role": 2
+        },
+        {
+            "id": 4,
+            "joinedAt": "2022-01-17T14:30:00.000Z",
+            "tag": "Mass Perfection#7574",
+            "avatar": "https://cdn.discordapp.com/avatars/401905701057724419/e65f669999c85c946377f1eb7eaf0762.png",
+            "role": 0
+        },
+        {
+            "id": 5,
+            "joinedAt": "2022-01-17T14:30:00.000Z",
+            "tag": "Samurai Kaze#1239",
+            "avatar": "https://cdn.discordapp.com/avatars/908241224396341258/9a58829d65c8adebdba5d2d6fea8f032.png",
+            "role": 2
+        },
+        {
+            "id": 6,
+            "joinedAt": "2022-01-17T05:32:01.000Z",
+            "tag": "Ducky#5410",
+            "avatar": "https://cdn.discordapp.com/avatars/313487526105055252/c3519eebe67c84540eb597c939223a97.png",
+            "role": 0
+        }
+    ],
+    "user_data_total": {
+        "total": "4"
+    }
+}
