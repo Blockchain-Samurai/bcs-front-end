@@ -84,7 +84,7 @@ function buildSamurai(samurai){
     } else if(samurai.length >= 1) {
         samurai_container.html('');
         samurai.forEach(s => {
-            console.log(s);
+            // console.log(s);
             let formatted_clan;
             if(s.clan.name == 'Ronin'){
                 formatted_clan='None';
@@ -109,7 +109,7 @@ function buildSamurai(samurai){
                             </button>
                         </div>
                         <div class="modal-body">
-                            <img class="img-fluid rounded mb-3" src='assets/images/1.png'>
+                            <img class="img-fluid rounded mb-3" src='assets/images/clans/loading.gif' data-src='${s.image}'>
                             <h5>Rarity: ${s.rarity}</h5>
                             <h5>Clan: ${formatted_clan}</h5>
                             <h5>Role: ${s.role}</h5>
