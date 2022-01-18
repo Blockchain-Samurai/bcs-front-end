@@ -109,7 +109,7 @@ function buildSamurai(samurai){
                             </button>
                         </div>
                         <div class="modal-body">
-                            <img class="img-fluid rounded mb-3" src='assets/images/clans/loading.gif' data-src='${s.image}'>
+                            <img class="img-fluid rounded mb-3 lazyload" src='assets/images/clans/loading.gif' data-src='${s.image}'>
                             <h5>Rarity: ${s.rarity}</h5>
                             <h5>Clan: ${formatted_clan}</h5>
                             <h5>Role: ${s.role}</h5>
