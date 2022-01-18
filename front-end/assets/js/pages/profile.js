@@ -84,7 +84,7 @@ function buildSamurai(samurai){
     } else if(samurai.length >= 1) {
         samurai_container.html('');
         samurai.forEach(s => {
-            console.log(s);
+            // console.log(s);
             let formatted_clan;
             if(s.clan.name == 'Ronin'){
                 formatted_clan='None';
