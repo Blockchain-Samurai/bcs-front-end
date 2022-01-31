@@ -1,10 +1,13 @@
-
 $(document).ready(async function() {
     //create image to preload:
     $(".lazyload").lazyload();
 
     await getUser().then(async res => {
         buildProfile(res);
+
+        await getWallet().then(async res => {
+            buildWallets(res);
+        });
 
         await getSamurai(res.id, 0).then(async res => {
             buildSamurai(res.data);
@@ -26,8 +29,13 @@ $(document).ready(async function() {
 function buildProfile(user){
     let userpic_container = $('#user_pic_container');
     let username_container = $('#user_name_container');
+    let prof_pic = user.avatar;
+    let prof_pic_val = (/[^/]*$/.exec(prof_pic)[0]).replace(/\.[^/.]+$/, "");
+    if(prof_pic_val == 'null') {
+        prof_pic = "https://blockchainsamurai.io/api/uploads/default.jpg";
+    }
     username_container.html(user.tag);
-    userpic_container.html(`<img src="assets/images/default.jpg" class="img-fluid samurai_profile_img rounded-circle lazyload" data-src='${user.avatar}' alt="thumb" />`);
+    userpic_container.html(`<img src="assets/images/default.jpg" class="img-fluid samurai_profile_img rounded-circle lazyload" data-src='${prof_pic}' alt="thumb" />`);
     $(".lazyload").lazyload();
 }
 
@@ -145,6 +153,83 @@ function buildEvents(events){
     console.log('Build events!');
 }
 
+function buildWallets(wallets){
+    const nowalletContainer = $('#no-wallet-container');
+    const walletTableContainer = $('#wallet-table-container');
+    const walletTable = $('#wallet-table');
+    const walletTableBody = $('#wallet-table-body');
+    const walletModalContainer = $('#wallet_modal_container');
+    if(wallets.length < 1){
+        walletTableContainer.hide();
+        return;
+    } else {
+        nowalletContainer.hide();
+
+        wallets.forEach((w) => {
+            let validatedIcon;
+            if(w.validated){
+                validatedIcon = '<i class="fas fa-check-circle text-success"></i>';
+            } else {
+                validatedIcon = '<i class="fas fa-exclamation-circle text-danger"></i>';
+            }
+
+            let tr = `
+            <tr>
+                <td class="text-truncate" style="max-width: 150px;">${w.address}</td>
+                <td class="text-center">${w.provider}</td>
+                <td class="text-center">${validatedIcon}</td>
+                <td>
+                    <button id="wallet-delete-button-${w.id}" class="btn btn-danger btn-icon-split btn-sm" type="button" data-toggle="modal" data-target="#wallet_modal_${w.id}" data-backdrop="static" data-keyboard="false">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-trash-alt"></i>
+                        </span>
+                        <span class="text">Delete</span>
+                    </button>
+                </td>
+            </tr>
+            `;
+            walletTableBody.append(tr);
+
+            let wallet_modal=`
+            <div class="modal fade" id="wallet_modal_${w.id}" tabindex="-1" role="dialog" aria-labelledby="walletModalLabel_${w.id}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="walletModalLabel_${w.id}">Delete Wallet</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you would like to delete wallet address:</p>
+                            <div class="row container">
+                                <p class="col-12 text-truncate bg-dark text-white">${w.address}</p>
+                            </div>
+                            <p>Please know that this action is irreversible and may result in Samurai not being associated with your account.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <button class="btn btn-danger" onclick="deleteWallet('${w.id}')">Delete Wallet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+            walletModalContainer.append(wallet_modal);
+        });
+        walletTable.DataTable({
+            "searching": false,
+            "lengthChange": false,
+            "bPaginate": false,
+            "bLengthChange": false,
+            "columnDefs": [{
+                "targets": 3,
+                "orderable": false
+            }],
+        });
+    }
+}
+
 async function getUser(){
     return new Promise(function(res,rej){
         jQuery.ajax({
@@ -175,4 +260,57 @@ async function getSamurai(user_id, page){
 async function getEvents(){
     // TODO : finish event endpoints
     return 1;
+}
+
+async function getWallet(){
+    return new Promise(function(res,rej){
+        jQuery.ajax({
+            //url: "http://127.0.0.1:5501/front-end/temp_data/api-user-wallet.json",
+            url: 'https://blockchainsamurai.io/api/user/wallet',
+            method: "GET"
+        }).then(response => {
+            res(response);
+        }).catch(error => {
+            rej(error);
+        })
+      });
+}
+
+async function deleteWallet(wallet_id){
+    let walletButton = $(`#wallet-delete-button-${wallet_id}`);
+    let walletModal = $(`#wallet_modal_${wallet_id}`);
+    walletButton.html('<i class="fas fa-spinner fa-pulse""></i>');
+    walletButton.attr('disabled', true);
+    jQuery.ajax({
+        url: `https://blockchainsamurai.io/api/user/wallet/${wallet_id}`,
+        method: "DELETE"
+    }).then(async response => {
+        walletModal.modal('hide');
+        jQuery.notify(
+            {title: 'Wallet Deleted', message: `Your Nami Wallet was successfully deleted.`, icon:'fas fa-check-circle'},
+              {
+                type: 'success',
+                delay: 5000,
+            }
+        );
+        await getWallet().then(async res => {
+            buildWallets(res);
+        });
+    }).catch(error => {
+        jQuery.notify(
+            {title: 'Error Deleting Wallet', message: `We were unable to delete your wallet at this time. Please try again in a little bit.`, icon:'fas fa-exclamation-circle'},
+              {
+                type: 'danger',
+                delay: 10000,
+            }
+        );
+        walletButton.html(`
+            <span class="icon text-white-50">
+                <i class="fas fa-trash-alt"></i>
+            </span>
+            <span class="text">Retry</span>
+        `);
+        walletButton.removeAttr('disabled');
+        walletModal.modal('hide');
+    })
 }
