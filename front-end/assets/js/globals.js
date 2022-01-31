@@ -105,7 +105,7 @@ async function isLoggedIn(){
     return new Promise(function(res,rej){
         jQuery.ajax({
             //url: "http://127.0.0.1:5501/front-end/temp_data/api-user-profile.json",
-            url: "https://blockchainsamurai.io/api/user/profile",
+            url: "https://blockchainsamurai.io/api/user/session",
             method: "GET",
         }).then(response => {
             res(response);
@@ -145,8 +145,9 @@ function buildUser(user){
     let prof_pic = user.avatar;
     let user_profile_mobile;
     let user_profile;
-    if(prof_pic == null) {
-        prof_pic = "assets/images/default.jpg";
+    let prof_pic_val = (/[^/]*$/.exec(prof_pic)[0]).replace(/\.[^/.]+$/, "");
+    if(prof_pic_val == 'null') {
+        prof_pic = "https://blockchainsamurai.io/api/uploads/default.jpg";
     }
     if(user.role == 2) {
         user_profile = `
