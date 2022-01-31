@@ -26,7 +26,7 @@ nami_button.on('click', async function(){
             "address": address,
             "provider": "nami"
         };
-        await addWallet(wallet_obj).then((res) => {
+        await addWallet(wallet_obj).then(async (res) => {
             jQuery.notify(
                 {title: 'New Wallet Added', message: `Your Nami Wallet was successfully added.`, icon:'fas fa-check-circle'},
                   {
