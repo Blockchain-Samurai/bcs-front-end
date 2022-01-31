@@ -33,7 +33,10 @@ nami_button.on('click', async function(){
                     type: 'success',
                     delay: 5000,
                 }
-              );
+            );
+            await getWallet().then(async res => {
+                buildWallets(res);
+            });
         }).catch(error => {
             console.log(error);
             jQuery.notify(
@@ -147,4 +150,97 @@ async function addWallet(wallet_obj){
             rej(error);
         })
       });
+}
+
+async function getWallet(){
+    return new Promise(function(res,rej){
+        jQuery.ajax({
+            //url: "http://127.0.0.1:5501/front-end/temp_data/api-user-wallet.json",
+            url: 'https://blockchainsamurai.io/api/user/wallet',
+            method: "GET"
+        }).then(response => {
+            res(response);
+        }).catch(error => {
+            rej(error);
+        })
+      });
+}
+
+function buildWallets(wallets){
+    const nowalletContainer = $('#no-wallet-container');
+    const walletTableContainer = $('#wallet-table-container');
+    const walletTable = $('#wallet-table');
+    const walletTableBody = $('#wallet-table-body');
+    const walletModalContainer = $('#wallet_modal_container');
+    if(wallets.length < 1){
+        walletTableContainer.hide();
+        nowalletContainer.show();
+        return;
+    } else {
+        nowalletContainer.hide();
+        walletTableContainer.show();
+
+        wallets.forEach((w) => {
+            let validatedIcon;
+            if(w.validated){
+                validatedIcon = '<i class="fas fa-check-circle text-success"></i>';
+            } else {
+                validatedIcon = '<i class="fas fa-exclamation-circle text-danger"></i>';
+            }
+
+            let tr = `
+            <tr>
+                <td class="text-truncate" style="max-width: 150px;">${w.address}</td>
+                <td class="text-center">${w.provider}</td>
+                <td class="text-center">${validatedIcon}</td>
+                <td>
+                    <button id="wallet-delete-button-${w.id}" class="btn btn-danger btn-icon-split btn-sm" type="button" data-toggle="modal" data-target="#wallet_modal_${w.id}" data-backdrop="static" data-keyboard="false">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-trash-alt"></i>
+                        </span>
+                        <span class="text">Delete</span>
+                    </button>
+                </td>
+            </tr>
+            `;
+            walletTableBody.append(tr);
+
+            let wallet_modal=`
+            <div class="modal fade" id="wallet_modal_${w.id}" tabindex="-1" role="dialog" aria-labelledby="walletModalLabel_${w.id}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="walletModalLabel_${w.id}">Delete Wallet</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you would like to delete wallet address:</p>
+                            <div class="row container">
+                                <p class="col-12 text-truncate bg-dark text-white">${w.address}</p>
+                            </div>
+                            <p>Please know that this action is irreversible and may result in Samurai not being associated with your account.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <button class="btn btn-danger" onclick="deleteWallet('${w.id}')">Delete Wallet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+            walletModalContainer.append(wallet_modal);
+        });
+        walletTable.DataTable({
+            "searching": false,
+            "lengthChange": false,
+            "bPaginate": false,
+            "bLengthChange": false,
+            "columnDefs": [{
+                "targets": 3,
+                "orderable": false
+            }],
+        });
+    }
 }

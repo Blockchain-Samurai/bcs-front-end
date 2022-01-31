@@ -161,9 +161,11 @@ function buildWallets(wallets){
     const walletModalContainer = $('#wallet_modal_container');
     if(wallets.length < 1){
         walletTableContainer.hide();
+        nowalletContainer.show();
         return;
     } else {
         nowalletContainer.hide();
+        walletTableContainer.show();
 
         wallets.forEach((w) => {
             let validatedIcon;
