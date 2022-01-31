@@ -139,6 +139,7 @@ async function addWallet(wallet_obj){
         jQuery.ajax({
             url: 'https://blockchainsamurai.io/api/user/wallet',
             method: "POST",
+            headers: {"Content-Type": "application/json"},
             data: JSON.stringify(wallet_obj),
         }).then(response => {
             res(response);
