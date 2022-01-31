@@ -22,7 +22,11 @@ nami_button.on('click', async function(){
 
         // let utxos = await getUtxos(nami);
         let address = await getAddress(nami);
-        await addWallet(address).then((res) => {
+        let wallet_obj = {
+            "address": address,
+            "provider": "nami"
+        }
+        await addWallet(wallet_obj).then((res) => {
             jQuery.notify(
                 {title: 'New Wallet Added', message: `Your Nami Wallet was successfully added.`, icon:'fas fa-check-circle'},
                   {
