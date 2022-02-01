@@ -23,10 +23,14 @@ async function buildSamurai(){
     await getAllSamurai(0).then(async res => {
         let samuraiTotal = parseInt(res.samurai_data_total[0]);
         let samuraiPages = Math.ceil(samuraiTotal/25);
+        console.log('total: ', samuraiTotal);
+        console.log('pages: ', samuraiPages);
 
-        for(let i = 0; i < samuraiPages; i++){
+        for(let i = 0; i <= samuraiPages; i++){
             await getAllSamurai(i).then(async res => {
+                console.log("Get Samurai Page: ", i);
                 res.data.forEach(s => {
+                    console.log("Current Samurai: ", s);
                     let currRow = `
                     <tr>
                         <td class="text-truncate" style="max-width: 150px;">${s.id}</td>
@@ -50,6 +54,8 @@ async function buildSamurai(){
                 });
             });
         }
+
+        console.log("Build data table...")
         samuraiTable.DataTable({
             "columnDefs": [{
                 "targets": 7,
