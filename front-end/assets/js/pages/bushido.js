@@ -210,8 +210,10 @@ let initZoom_width = zoom_item[0]["clientWidth"];
 
 let regionLine_option = $('#region-lines-option');
 let roadLine_option = $('#road-lines-option');
+let cities_option = $('#cities-option');
 let regionLines = $('#hachi-sho-outline');
 let roadLines = $('#hachi-sho-roads');
+let cities = $('#hachi-sho-cities');
 
 regionLine_option.change(function() {
     if($(this).is(":checked")) {
@@ -230,6 +232,16 @@ roadLine_option.change(function() {
     } else {
         roadLines.removeClass('d-block');
         roadLines.addClass('d-none');
+    }
+});
+
+cities_option.change(function() {
+    if($(this).is(":checked")) {
+        cities.removeClass('d-none');
+        cities.addClass('d-block');
+    } else {
+        cities.removeClass('d-block');
+        cities.addClass('d-none');
     }
 });
 

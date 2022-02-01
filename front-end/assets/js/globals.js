@@ -40,7 +40,7 @@ $(async function() {
     await isLoggedIn().then(res => {
         buildUser(res);
     }).catch(err => {
-        console.log(err);
+        //console.log(err);
         buildLogin();
     });
 
