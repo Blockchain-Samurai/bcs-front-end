@@ -4,7 +4,7 @@ $(document).ready(async function() {
         if(res.role != 2){
             window.location.replace("https://blockchainsamurai.io");
         } else {
-            buildSamurai(res);
+            buildSamurai();
         }
     })
     .catch(err => {
@@ -17,7 +17,7 @@ $(document).ready(async function() {
 // ------------  BUILDER FUNCTIONS  ----------------
 // -------------------------------------------------
 
-async function buildSamurai(data){
+async function buildSamurai(){
     const samuraiTable = $('#samurai-table');
     const samuraiTableBody = $('#samurai-table-body');
     await getAllSamurai(0).then(async res => {
