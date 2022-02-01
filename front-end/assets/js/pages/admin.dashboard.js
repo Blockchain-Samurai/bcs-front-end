@@ -21,7 +21,8 @@ async function buildSamurai(){
     const samuraiTable = $('#samurai-table');
     const samuraiTableBody = $('#samurai-table-body');
     await getAllSamurai(0).then(async res => {
-        let samuraiTotal = parseInt(res.samurai_data_total[0]);
+        console.log('get init: ', res);
+        let samuraiTotal = parseInt(res.samurai_data_total.total);
         let samuraiPages = Math.ceil(samuraiTotal/25) - 1;
         console.log('total: ', samuraiTotal);
         console.log('pages: ', samuraiPages);
