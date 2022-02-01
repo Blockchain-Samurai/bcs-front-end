@@ -54,19 +54,18 @@ async function buildSamurai(){
                     samuraiTableBody.append(currRow);
                 });
             });
+            console.log("Build data table...")
+            samuraiTable.DataTable({
+                "columnDefs": [{
+                    "targets": 7,
+                    "orderable": false
+                },
+                {
+                    "targets": 1,
+                    "orderable": false
+                }],
+            });
         }
-
-        console.log("Build data table...")
-        samuraiTable.DataTable({
-            "columnDefs": [{
-                "targets": 7,
-                "orderable": false
-            },
-            {
-                "targets": 1,
-                "orderable": false
-            }],
-        });
     });
 }
 
