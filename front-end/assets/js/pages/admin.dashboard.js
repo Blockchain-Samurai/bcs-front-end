@@ -26,7 +26,7 @@ async function buildSamurai(){
 
         for(let i = 0; i < samuraiPages; i++){
             await getAllSamurai(i).then(async res => {
-                res.forEach(s => {
+                res.data.forEach(s => {
                     let currRow = `
                     <tr>
                         <td class="text-truncate" style="max-width: 150px;">${s.id}</td>
