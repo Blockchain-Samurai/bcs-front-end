@@ -26,7 +26,7 @@ async function buildSamurai(){
         console.log('total: ', samuraiTotal);
         console.log('pages: ', samuraiPages);
 
-        for(let i = 0; i <= samuraiPages; i++){
+        for(let i = 0; i < samuraiPages; i++){
             await getAllSamurai(i).then(async res => {
                 console.log("Get Samurai Page: ", i);
                 res.data.forEach(s => {
