@@ -4,9 +4,7 @@ $(document).ready(async function() {
         if(res.role != 2){
             window.location.replace("https://blockchainsamurai.io");
         } else {
-            await getAllSamurai().then(res => {
-                buildSamurai(res);
-            })
+            buildSamurai(res);
         }
     })
     .catch(err => {
@@ -19,41 +17,50 @@ $(document).ready(async function() {
 // ------------  BUILDER FUNCTIONS  ----------------
 // -------------------------------------------------
 
-function buildSamurai(data){
-    const samuraiTable = $('#samurai_table');
+async function buildSamurai(data){
+    const samuraiTable = $('#samurai-table');
+    const samuraiTableBody = $('#samurai-table-body');
+    await getAllSamurai(0).then(async res => {
+        let samuraiTotal = parseInt(res.samurai_data_total[0]);
+        let samuraiPages = Math.ceil(samuraiTotal/25);
 
-    samuraiTable.DataTable( {
-        dom: "Bfrtip",
-        paging: true,
-        pageLength: 25,
-        start: 0,
-        ajax: function ( data, callback, settings ) {
-
-            $.ajax({
-                //url: "http://127.0.0.1:5501/front-end/temp_data/api-samurai-all.json",
-                url: `https://blockchainsamurai.io/api/samurai?page=${data.start}`,
-                method: "GET",
-                success: function( data, textStatus, jQxhr ){
-                    callback({
-                        data: data.data,
-                        recordsTotal:  data.samurai_data_total['total'],
-                        recordsFiltered:  data.samurai_data_total['total'],
-                    });
-                },
-                error: function( jqXhr, textStatus, errorThrown ){
-                }
+        for(let i = 0; i < samuraiPages; i++){
+            await getAllSamurai(i).then(async res => {
+                res.forEach(s => {
+                    let currRow = `
+                    <tr>
+                        <td class="text-truncate" style="max-width: 150px;">${s.id}</td>
+                        <td class="text-center"><img src="${s.image}" class="img-rounded" alt="Cinque Terre"></td>
+                        <td class="text-center">${s.name}</td>
+                        <td class="text-center">${s.description}</td>
+                        <td class="text-center">${s.rarity}</td>
+                        <td class="text-center">${s.clan.name}</td>
+                        <td class="text-center">${s.user.tag}</td>
+                        <td>
+                            <button id="samurai-delete-button-${s.id}" class="btn btn-danger btn-icon-split btn-sm" type="button" data-toggle="modal" data-target="#samurai_modal_${s.id}" data-backdrop="static" data-keyboard="false">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-trash-alt"></i>
+                                </span>
+                                <span class="text">Delete</span>
+                            </button>
+                        </td>
+                    </tr>
+                    `;
+                    samuraiTableBody.append(currRow);
+                });
             });
-        },
-        serverSide: true,
-        "columns": [
-            { "data": "id" },
-            { "data": "name" },
-            { "data": "description" },
-            { "data": "rarity" },
-            { "data": "clan.name" },
-            { "data": "user.tag" }
-        ]
-    } );
+        }
+        samuraiTable.DataTable({
+            "columnDefs": [{
+                "targets": 7,
+                "orderable": false
+            },
+            {
+                "targets": 1,
+                "orderable": false
+            }],
+        });
+    });
 }
 
 // -------------------------------------------------
