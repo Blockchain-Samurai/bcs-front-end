@@ -25,12 +25,13 @@ function buildSamurai(data){
     samuraiTable.DataTable( {
         dom: "Bfrtip",
         paging: true,
-        pageLength: 2,
+        pageLength: 25,
+        start: 0,
         ajax: function ( data, callback, settings ) {
 
             $.ajax({
                 //url: "http://127.0.0.1:5501/front-end/temp_data/api-samurai-all.json",
-                url: `https://blockchainsamurai.io/api/samurai?page=${page}`,
+                url: `https://blockchainsamurai.io/api/samurai?page=${data.start}`,
                 method: "GET",
                 success: function( data, textStatus, jQxhr ){
                     callback({
