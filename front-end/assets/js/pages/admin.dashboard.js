@@ -78,7 +78,7 @@ async function buildUsers(){
     await getAllUsers(0).then(async res => {
         let userTotal = parseInt(res.user_data_total.total);
         let userPages = Math.ceil(userTotal/25) - 1;
-        if ( $.fn.DataTable.isDataTable('#tblRemittanceList') ) {
+        if ( $.fn.DataTable.isDataTable('#user-table') ) {
             userTable.DataTable().destroy();
             userTableBody.html('');
         }
