@@ -347,7 +347,21 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">All Users</h5>
-                                <div id="all_users_table"></div>
+                                <table id="user-table" class="display nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">ID</th>
+                                            <th class="text-center">Avatar</th>
+                                            <th class="text-center">Username</th>
+                                            <th class="text-center">Role</th>
+                                            <th class="text-center">Joined At</th>
+                                            <th class="text-center">Options</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id='user-table-body' class="display nowrap">
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -358,7 +372,7 @@
                     <div class="col-12 mb-5">
                         <div id='samurai-table-container' class="card">
                             <div class="card-body">
-                                <table id="samurai-table">
+                                <table id="samurai-table" class="display nowrap">
                                     <thead>
                                         <tr>
                                             <th class="text-center">ID</th>
@@ -371,7 +385,7 @@
                                             <th class="text-center">Options</th>
                                         </tr>
                                     </thead>
-                                    <tbody id='samurai-table-body'>
+                                    <tbody id='samurai-table-body' class="display nowrap">
 
                                     </tbody>
                                 </table>
@@ -401,6 +415,16 @@
                 </div>
             </div>
         </section>
+
+        <div id="user-edit-modals">
+
+        </div>
+        <div id="samurai-edit-modals">
+
+        </div>
+        <div id="samurai-delete-modals">
+
+        </div>
 
         <!-- FOOTER -->
         <section class="mt-5 p-5 text-white bg-dark">
@@ -451,6 +475,7 @@
         <script src="assets/js/vendor/bootstrap.min.js"></script>
         <script src="assets/js/vendor/moment.min.js"></script>
         <script src="assets/js/vendor/lazyload.js"></script>
+        <script src="assets/js/vendor/notify.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
         <!-- /VENDOR SCRIPTS -->
