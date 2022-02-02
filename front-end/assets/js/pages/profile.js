@@ -224,7 +224,8 @@ function buildWallets(wallets){
             "lengthChange": false,
             "bPaginate": false,
             "bLengthChange": false,
-            "scrollX": true,
+            "sScrollX": "100%",
+            "sScrollXInner": "110%",
             "columnDefs": [{
                 "targets": 3,
                 "orderable": false

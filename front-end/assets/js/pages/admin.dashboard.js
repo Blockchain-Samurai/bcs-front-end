@@ -65,7 +65,8 @@ async function buildSamurai(){
                     "orderable": false
                 }
                 ],
-                "scrollX": true
+                "sScrollX": "100%",
+                "sScrollXInner": "110%"
             });
         }
     });
@@ -78,10 +79,6 @@ async function buildUsers(){
     await getAllUsers(0).then(async res => {
         let userTotal = parseInt(res.user_data_total.total);
         let userPages = Math.ceil(userTotal/25) - 1;
-        if ( $.fn.DataTable.isDataTable('#user-table') ) {
-            userTable.DataTable().destroy();
-            userTableBody.html('');
-        }
 
         for(let i = 0; i <= userPages; i++){
             await getAllUsers(i).then(async res => {
@@ -159,7 +156,8 @@ async function buildUsers(){
                     "targets": 1,
                     "orderable": false
                 }],
-                "scrollX": true
+                "sScrollX": "100%",
+                "sScrollXInner": "110%"
             });
         }
     });
@@ -263,7 +261,7 @@ async function updateUser(user_id,data){
             data: JSON.stringify(data),
         }).then(response => {
             res(response);
-            buildUsers();
+            location.reload();
         }).catch(error => {
             rej(error);
         })
