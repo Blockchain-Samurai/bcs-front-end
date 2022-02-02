@@ -228,9 +228,7 @@ function buildWallets(wallets){
                 "targets": 3,
                 "orderable": false
                 }
-            ],
-            "sScrollX": "100%",
-            "sScrollXInner": "110%"
+            ]
         });
     }
 }

@@ -458,19 +458,21 @@
                         </div>
                         <div id='wallet-table-container' class="card">
                             <div class="card-body">
-                                <table id="wallet-table" class="display nowrap">
-                                    <thead class="display nowrap">
-                                        <tr>
-                                            <th class="text-center">Address</th>
-                                            <th class="text-center">Provider</th>
-                                            <th class="text-center">Validated</th>
-                                            <th class="text-center">Options</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id='wallet-table-body' class="display nowrap">
+                                <div class="scroll-horizontal">
+                                    <table id="wallet-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">Address</th>
+                                                <th class="text-center">Provider</th>
+                                                <th class="text-center">Validated</th>
+                                                <th class="text-center">Options</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id='wallet-table-body'>
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -555,6 +557,7 @@
         <script src="assets/js/vendor/bootstrap.min.js"></script>
         <script src="assets/js/vendor/lazyload.js"></script>
         <script src="assets/js/vendor/notify.min.js"></script>
+        <script src="assets/js/vendor/OverlayScrollbars.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
         <!-- /VENDOR SCRIPTS -->
         <!-- PAGE SCRIPTS -->
