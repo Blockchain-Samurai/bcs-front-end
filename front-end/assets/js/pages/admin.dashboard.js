@@ -260,7 +260,7 @@ async function updateUser(user_id,data){
     return new Promise(function(res,rej){
         jQuery.ajax({
             url: `https://blockchainsamurai.io/api/user/${user_id}`,
-            method: "POST",
+            method: "PATCH",
             headers: {"Content-Type": "application/json"},
             data: JSON.stringify(data),
         }).then(response => {
