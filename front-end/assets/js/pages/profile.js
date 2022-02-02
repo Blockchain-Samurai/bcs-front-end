@@ -177,7 +177,7 @@ function buildWallets(wallets){
 
             let tr = `
             <tr>
-                <td class="text-truncate" style="max-width: 150px;">${w.address}</td>
+                <td class="text-center">${w.address}</td>
                 <td class="text-center">${w.provider}</td>
                 <td class="text-center">${validatedIcon}</td>
                 <td>
@@ -228,7 +228,14 @@ function buildWallets(wallets){
             "columnDefs": [{
                 "targets": 3,
                 "orderable": false
-            }],
+            },
+            {
+                "targets": 0,
+                render: function ( data, type, row ) {
+                    return data.substr( 0, 20 );
+                }
+            }
+            ],
         });
     }
 }

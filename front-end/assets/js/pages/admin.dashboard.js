@@ -5,6 +5,7 @@ $(document).ready(async function() {
             window.location.replace("https://blockchainsamurai.io");
         } else {
             buildSamurai();
+            buildUsers();
         }
     })
     .catch(err => {
@@ -32,7 +33,7 @@ async function buildSamurai(){
                         <td class="text-center">${s.id}</td>
                         <td class="text-center"><img src="${s.image}" class="rounded-circle" style="max-height: 45px; max-width: 45px;"></td>
                         <td class="text-center">${s.name}</td>
-                        <td class="text-center text-truncated" style="max-width: 150px;">${s.description}</td>
+                        <td class="text-center>${s.description}</td>
                         <td class="text-center">${s.rarity}</td>
                         <td class="text-center">${s.clan.name}</td>
                         <td class="text-center">${s.user.tag}</td>
@@ -54,14 +55,22 @@ async function buildSamurai(){
                 });
             });
             samuraiTable.DataTable({
-                "columnDefs": [{
-                    "targets": 7,
-                    "orderable": false
-                },
+                "columnDefs": [
                 {
                     "targets": 1,
                     "orderable": false
-                }],
+                },
+                {
+                    "targets": 3,
+                    render: function ( data, type, row ) {
+                        return data.substr( 0, 20 );
+                    }
+                },
+                {
+                    "targets": 7,
+                    "orderable": false
+                }
+                ],
                 "scrollX": true
             });
         }
