@@ -73,7 +73,9 @@ async function buildSamurai(){
 
 async function buildUsers(){
     const userTable = $('#user-table');
+    userTable.DataTable().destroy();
     const userTableBody = $('#user-table-body');
+    userTableBody.html('');
     const userEditModal = $('#user-edit-modals');
     await getAllUsers(0).then(async res => {
         let userTotal = parseInt(res.user_data_total.total);
