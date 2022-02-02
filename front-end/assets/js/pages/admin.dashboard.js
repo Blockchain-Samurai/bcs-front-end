@@ -113,7 +113,7 @@ async function buildUsers(){
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Eh... I need to finish this but you'll be able to edit a user's role here :D</p>
+                                    <p>Select the user's new role below. The users current role is: ${user_role}</p>
                                     <div class="form-group">
                                         <label for="user-role">User Role</label>
                                         <select class="form-control" id="user-role-${u.id}">
@@ -265,6 +265,7 @@ async function updateUser(user_id,data){
             data: JSON.stringify(data),
         }).then(response => {
             res(response);
+            buildUsers();
         }).catch(error => {
             rej(error);
         })
