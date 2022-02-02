@@ -178,9 +178,9 @@ function buildWallets(wallets){
             let tr = `
             <tr>
                 <td class="text-center">${w.address}</td>
-                <td class="text-center">${w.provider}</td>
+                <td class="text-truncate" style="max-width:150px;">${w.provider}</td>
                 <td class="text-center">${validatedIcon}</td>
-                <td>
+                <td class="text-center">
                     <button id="wallet-delete-button-${w.id}" class="btn btn-danger btn-icon-split btn-sm" type="button" data-toggle="modal" data-target="#wallet_modal_${w.id}" data-backdrop="static" data-keyboard="false">
                         <span class="icon text-white-50">
                             <i class="fas fa-trash-alt"></i>
@@ -228,12 +228,6 @@ function buildWallets(wallets){
             "columnDefs": [{
                 "targets": 3,
                 "orderable": false
-            },
-            {
-                "targets": 0,
-                render: function ( data, type, row ) {
-                    return data.substr( 0, 20 );
-                }
             }
             ],
         });

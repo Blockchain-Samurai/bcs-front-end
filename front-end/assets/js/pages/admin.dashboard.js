@@ -33,11 +33,11 @@ async function buildSamurai(){
                         <td class="text-center">${s.id}</td>
                         <td class="text-center"><img src="${s.image}" class="rounded-circle" style="max-height: 45px; max-width: 45px;"></td>
                         <td class="text-center">${s.name}</td>
-                        <td class="text-center>${s.description}</td>
+                        <td class="text-truncate" style="max-width:150px;">${s.description}</td>
                         <td class="text-center">${s.rarity}</td>
                         <td class="text-center">${s.clan.name}</td>
                         <td class="text-center">${s.user.tag}</td>
-                        <td>
+                        <td class="text-center">
                             <button id="samurai-delete-button-${s.id}" class="btn btn-danger btn-sm" type="button" data-toggle="modal" data-target="#samurai_delete_modal_${s.id}" data-backdrop="static" data-keyboard="false">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-trash-alt"></i>
@@ -59,12 +59,6 @@ async function buildSamurai(){
                 {
                     "targets": 1,
                     "orderable": false
-                },
-                {
-                    "targets": 3,
-                    render: function ( data, type, row ) {
-                        return data.substr( 0, 20 );
-                    }
                 },
                 {
                     "targets": 7,
