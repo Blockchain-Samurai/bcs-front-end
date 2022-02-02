@@ -56,14 +56,14 @@ async function buildSamurai(){
             });
             samuraiTable.DataTable({
                 "columnDefs": [
-                {
-                    "targets": 1,
-                    "orderable": false
-                },
-                {
-                    "targets": 7,
-                    "orderable": false
-                }
+                    {
+                        "targets": 1,
+                        "orderable": false
+                    },
+                    {
+                        "targets": 7,
+                        "orderable": false
+                    }
                 ],
                 "sScrollX": "100%",
                 "sScrollXInner": "110%"
@@ -148,14 +148,16 @@ async function buildUsers(){
                 });
             });
             userTable.DataTable({
-                "columnDefs": [{
-                    "targets": 7,
-                    "orderable": false
-                },
-                {
-                    "targets": 1,
-                    "orderable": false
-                }],
+                "columnDefs": [
+                    {
+                        "targets": 5,
+                        "orderable": false
+                    },
+                    {
+                        "targets": 1,
+                        "orderable": false
+                    }
+                ],
                 "sScrollX": "100%",
                 "sScrollXInner": "110%"
             });

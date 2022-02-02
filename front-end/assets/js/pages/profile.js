@@ -224,13 +224,13 @@ function buildWallets(wallets){
             "lengthChange": false,
             "bPaginate": false,
             "bLengthChange": false,
-            "sScrollX": "100%",
-            "sScrollXInner": "110%",
             "columnDefs": [{
                 "targets": 3,
                 "orderable": false
-            }
+                }
             ],
+            "sScrollX": "100%",
+            "sScrollXInner": "110%"
         });
     }
 }
