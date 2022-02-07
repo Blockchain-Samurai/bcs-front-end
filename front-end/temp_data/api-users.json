@@ -3,6 +3,7 @@
         {
             "id": 1,
             "joinedAt": "2022-01-17T14:30:00.000Z",
+            "lastLogin": "2022-02-06T21:33:11.000Z",
             "tag": "Samurai Ahiru#7626",
             "avatar": "https://cdn.discordapp.com/avatars/908507429837357056/0d18ffab7ea3097209209d4c16134b06.png",
             "role": 2
@@ -10,6 +11,7 @@
         {
             "id": 4,
             "joinedAt": "2022-01-17T14:30:00.000Z",
+            "lastLogin": null,
             "tag": "Mass Perfection#7574",
             "avatar": "https://cdn.discordapp.com/avatars/401905701057724419/e65f669999c85c946377f1eb7eaf0762.png",
             "role": 0
@@ -17,6 +19,7 @@
         {
             "id": 5,
             "joinedAt": "2022-01-17T14:30:00.000Z",
+            "lastLogin": null,
             "tag": "Samurai Kaze#1239",
             "avatar": "https://cdn.discordapp.com/avatars/908241224396341258/9a58829d65c8adebdba5d2d6fea8f032.png",
             "role": 2
@@ -24,9 +27,18 @@
         {
             "id": 6,
             "joinedAt": "2022-01-17T05:32:01.000Z",
+            "lastLogin": null,
             "tag": "Ducky#5410",
-            "avatar": "https://cdn.discordapp.com/avatars/313487526105055252/c3519eebe67c84540eb597c939223a97.png",
+            "avatar": "https://cdn.discordapp.com/avatars/313487526105055252/64ccd0090712f51fd9f3d3e82a937e0c.png",
             "role": 0
+        },
+        {
+            "id": 10,
+            "joinedAt": "2022-01-19T08:41:26.000Z",
+            "lastLogin": null,
+            "tag": "Volaris Windsoul#1120",
+            "avatar": "https://cdn.discordapp.com/avatars/298614005042249730/0c9a94452d08b2885e5551e20ad13c8b.png",
+            "role": 2
         }
     ],
     "user_data_total": {

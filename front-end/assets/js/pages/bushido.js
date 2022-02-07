@@ -31,9 +31,9 @@ $(document).ready(async function() {
     //create image to preload:
     $(".lazyload").lazyload();
 
-    await getClans().then(res => {
+    await getClans(0).then(res => {
         clan_cont.html('');
-        res.forEach(clan => {
+        res.data.forEach(clan => {
             let clan_card_temp = `
             <div class="col-xl-4 col-md-6 col-sm-12 mb-5">
                 <div id="clan-${clan.id}" data-tilt class="clan-card">
@@ -69,13 +69,10 @@ $(document).ready(async function() {
 async function getClans(page){
     return new Promise(function(res,rej){
       jQuery.ajax({
-        url: "https://blockchainsamurai.io/api/clan/",
+        url: `https://blockchainsamurai.io/api/clan?page=${page}`,
+        //url: "http://127.0.0.1:5501/front-end/temp_data/clan_data.json",
         method: "GET",
         contentType: "application/json; charset=utf-8",
-        body: {
-            "entities": 10,
-            "page": 0
-        },
       }).then(response => {
         res(response);
       }).catch(error => {

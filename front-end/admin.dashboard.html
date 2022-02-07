@@ -328,23 +328,15 @@
             <div class="container mt-5">
                 <h2 class="small-title text-white header-font">Users</h2>
                 <div class="row mb-5">
-                    <div class="col-12 col-xl-8 col-xxl-8 mb-5">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">All Users</h5>
-                                <div id="all_users_table"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-xl-4 col-xxl-4 mb-5">
+                    <div class="col-12 mb-5">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Users Joined</h5>
-                                <canvas id="users_joined" width="400" height="auto"></canvas>
+                                <canvas id="users_joined" width="auto" height="50"></canvas>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 mb-5">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">All Users</h5>
@@ -356,6 +348,7 @@
                                             <th class="text-center">Username</th>
                                             <th class="text-center">Role</th>
                                             <th class="text-center">Joined At</th>
+                                            <th class="text-center">Last Login</th>
                                             <th class="text-center">Options</th>
                                         </tr>
                                     </thead>
@@ -369,6 +362,12 @@
                 </div>
 
                 <h2 class="small-title text-white header-font">Samurai</h2>
+                <button class="btn btn-primary btn-icon-split btn-sm mb-3" onclick="">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-user-ninja"></i>
+                    </span>
+                    <span class="text">Add Samurai</span>
+                </button>
                 <div class="row">
                     <div class="col-12 mb-5">
                         <div id='samurai-table-container' class="card">
@@ -379,7 +378,9 @@
                                             <th class="text-center">ID</th>
                                             <th class="text-center">Image</th>
                                             <th class="text-center">Name</th>
+                                            <th class="text-center">Japanese Name</th>
                                             <th class="text-center">Description</th>
+                                            <th class="text-center">Role</th>
                                             <th class="text-center">Rarity</th>
                                             <th class="text-center">Clan Name</th>
                                             <th class="text-center">Owner</th>
@@ -387,7 +388,6 @@
                                         </tr>
                                     </thead>
                                     <tbody id='samurai-table-body' class="display nowrap">
-
                                     </tbody>
                                 </table>
                             </div>
@@ -396,20 +396,29 @@
                 </div>
 
                 <h2 class="small-title text-white header-font">Clans</h2>
+                <button class="btn btn-primary btn-icon-split btn-sm mb-3" onclick="">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-torii-gate"></i>
+                    </span>
+                    <span class="text">Add Clan</span>
+                </button>
                 <div class="row">
-                    <div class="col-12 col-xl-4 col-xxl-4 mb-5">
-                        <div class="card">
+                    <div class="col-12 mb-5">
+                        <div id='clan-table-container' class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Create Clan</h5>
-                                <canvas id="users_joined" width="400" height="auto"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-xl-8 col-xxl-8 mb-5">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">All Clans</h5>
-                                <div id="all_users_table"></div>
+                                <table id="clan-table" class="display nowrap">
+                                    <thead class="display nowrap">
+                                        <tr>
+                                            <th class="text-center">ID</th>
+                                            <th class="text-center">Image</th>
+                                            <th class="text-center">Name</th>
+                                            <th class="text-center">Description</th>
+                                            <th class="text-center">Options</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id='clan-table-body' class="display nowrap">
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -424,6 +433,12 @@
 
         </div>
         <div id="samurai-delete-modals">
+
+        </div>
+        <div id="clan-edit-modals">
+
+        </div>
+        <div id="clan-delete-modals">
 
         </div>
 
@@ -474,10 +489,11 @@
         <script src="assets/js/vendor/jquery.cookie.min.js"></script>
         <script src="assets/js/vendor/popper.min.js"></script>
         <script src="assets/js/vendor/bootstrap.min.js"></script>
-        <script src="assets/js/vendor/moment.min.js"></script>
         <script src="assets/js/vendor/lazyload.js"></script>
         <script src="assets/js/vendor/notify.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@^3"></script>
+        <script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
         <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
         <!-- /VENDOR SCRIPTS -->
         <!-- PAGE SCRIPTS -->

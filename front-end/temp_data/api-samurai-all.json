@@ -3,8 +3,9 @@
         {
             "id": 1,
             "name": "The Faceless Man",
-            "image": "https://blockchainsamurai.io/assets/images/1.png",
-            "description": "",
+            "japaneseName": "顔のない男",
+            "image": "https://blockchainsamurai.io/api/uploads/Ronin_Kao_no_Nai_Otoko.gif",
+            "description": "Failing to protect his home, this Ronin hides his shame and scars behind a mask",
             "role": 0,
             "rarity": 10,
             "user": {
@@ -15,35 +16,37 @@
             "clan": {
                 "id": 1,
                 "name": "Ronin",
-                "description": "",
-                "image": "https://blockchainsamurai.io/assets/images/clans/Ronin%20Placeholder.gif"
+                "description": "this is an example description",
+                "image": "https://blockchainsamurai.io/api/uploads/Ronin Placeholder (1).gif"
             }
         },
         {
             "id": 3,
-            "name": "Delete Me",
-            "image": "https://blockchainsamurai.io/assets/images/1.png",
-            "description": "",
+            "name": "The Flood TEST",
+            "japaneseName": null,
+            "image": "https://blockchainsamurai.io/api/uploads/Ronin_Kozui.gif",
+            "description": "Wokou TEST",
             "role": 0,
-            "rarity": 0,
+            "rarity": 10,
             "user": {
                 "id": 1,
                 "tag": "Samurai Ahiru#7626",
                 "avatar": "https://cdn.discordapp.com/avatars/908507429837357056/0d18ffab7ea3097209209d4c16134b06.png"
             },
             "clan": {
-                "id": 2,
-                "name": "Lotus Clan",
-                "description": "",
-                "image": "https://blockchainsamurai.io/assets/images/clans/Lotus%20Clan%20Placeholder.gif"
+                "id": 1,
+                "name": "Ronin",
+                "description": "this is an example description",
+                "image": "https://blockchainsamurai.io/api/uploads/Ronin Placeholder (1).gif"
             }
         },
         {
             "id": 5,
             "name": "Test Samurai",
+            "japaneseName": null,
             "image": "https://blockchainsamurai.io/assets/images/1.png",
             "description": "test samurai descirption beep boop",
-            "role": 5,
+            "role": 3,
             "rarity": 5,
             "user": {
                 "id": 5,
@@ -53,12 +56,32 @@
             "clan": {
                 "id": 2,
                 "name": "Lotus Clan",
-                "description": "",
-                "image": "https://blockchainsamurai.io/assets/images/clans/Lotus%20Clan%20Placeholder.gif"
+                "description": "this is an example description",
+                "image": "https://blockchainsamurai.io/api/uploads/Lotus Clan Placeholder (1).gif"
+            }
+        },
+        {
+            "id": 21,
+            "name": "The Last Tiger",
+            "japaneseName": null,
+            "image": "https://blockchainsamurai.io/api/uploads/Ronin_Saigo_no_Tora.gif",
+            "description": "Abandoned and left in the woods, this Ronin now seeks to find his lineage.",
+            "role": 0,
+            "rarity": 10,
+            "user": {
+                "id": 1,
+                "tag": "Samurai Ahiru#7626",
+                "avatar": "https://cdn.discordapp.com/avatars/908507429837357056/0d18ffab7ea3097209209d4c16134b06.png"
+            },
+            "clan": {
+                "id": 1,
+                "name": "Ronin",
+                "description": "this is an example description",
+                "image": "https://blockchainsamurai.io/api/uploads/Ronin Placeholder (1).gif"
             }
         }
     ],
     "samurai_data_total": {
-        "total": "3"
+        "total": "8"
     }
 }
