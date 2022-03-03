@@ -12,8 +12,18 @@ $(document).ready(async function() {
     })
     .catch(err => {
         console.log(err);
-        //window.location.replace("https://blockchainsamurai.io");
+        window.location.replace("https://blockchainsamurai.io");
     });
+});
+
+$('#samurai-edit-toggle-update-image').change(function() {
+    if($(this).is(":checked")) {
+        $('#samurai-edit-image-upload').removeClass('d-none');
+        $('#samurai-edit-image-upload').addClass('d-block');
+    } else {
+        $('#samurai-edit-image-upload').removeClass('d-block');
+        $('#samurai-edit-image-upload').addClass('d-none');
+    }
 });
 
 // -------------------------------------------------
@@ -89,7 +99,7 @@ async function buildSamurai(){
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form class="needs-validation" novalidate>
                                         <div class="form-group">
                                             <div class="custom-control custom-switch mb-3">
                                                 <input type="checkbox" class="custom-control-input" id="samurai-edit-toggle-update-image-${s.id}">
@@ -109,11 +119,11 @@ async function buildSamurai(){
                                         </div>
                                         <div class="form-group">
                                             <label for="samurai-edit-japanese-name-${s.id}">Japanese Name</label>
-                                            <input type="email" class="form-control" id="samurai-edit-japanese-name-${s.id}" placeholder="Enter samurai's japanese name..." value="${jpName}" required>
+                                            <input type="email" class="form-control" id="samurai-edit-japanese-name-${s.id}" placeholder="Enter samurai's japanese name..." value="${jpName}">
                                         </div>
                                         <div class="form-group">
                                             <label for="samurai-edit-description-${s.id}">Description</label>
-                                            <textarea class="form-control" id="samurai-edit-description-${s.id}" rows="3">${s.description}</textarea>
+                                            <textarea class="form-control" id="samurai-edit-description-${s.id}" rows="3" required>${s.description}</textarea>
                                             <small id="samurai-edit-description-help-${s.id}" class="form-text text-muted">
                                                 Description is an optional field and should only be used on rare samurai.
                                             </small>
@@ -131,20 +141,20 @@ async function buildSamurai(){
                                         </div>
                                         <div class="form-group">
                                             <label for="samurai-edit-clan-${s.id}">Clan</label>
-                                            <select class="form-control" id="samurai-edit-clan-${s.id}" class="clan-selector">
-                                            <option value="curr" selected>Current Clan</option>
+                                            <select class="form-control clan-selector" id="samurai-edit-clan-${s.id}">
+                                                <option value="${s.clan.id}" selected>Current: ${s.clan.name}</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="samurai-edit-owner-${s.id}">Owner</label>
                                             <select class="form-control owner-selector" id="samurai-edit-owner-${s.id}">
-                                                <option value="curr" selected>Current Owner</option>
+                                                <option value="${s.user.id}" selected>Current: ${s.user.tag}</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="samurai-edit-rarity-${s.id}">Rarity</label>
-                                            <input type="number" class="form-control" id="samurai-edit-rarity-${s.id}" aria-describedby="samurai-edit-rarity-help" value="${s.rarity}">
-                                            <small id="samurai-edit-rarity-help-${s.id}" class="form-text text-muted">Rarity is a numeric value between 1 - 10</small>
+                                            <input type="number" class="form-control" id="samurai-edit-rarity-${s.id}" aria-describedby="samurai-edit-rarity-help" value="${s.rarity}" required>
+                                            <small id="samurai-edit-rarity-help-${s.id}" class="form-text text-muted">Rarity is a numeric value between 1 - 30</small>
                                         </div>
                                     </form>
                                 </div>
@@ -484,6 +494,11 @@ async function buildClans(){
                     </div>
                     `;
 
+                    let clanOptions = `
+                        <option value="${c.id}">${c.name}</option>
+                    `;
+
+                    $('.clan-selector').append(clanOptions);
                     clanTableBody.append(currRow);
                     clanEditModals.append(currEditModal);
                     clanDeleteModals.append(currDeleteModal);
@@ -579,6 +594,10 @@ async function saveClanChange(clan_id){
         saveBtn.html('Retry');
         saveBtn.attr('disabled', false);
     });
+}
+
+function updateEditSamuraiModal(samurai_obj){
+    console.log('Update Modal To: ',samurai_obj);
 }
 
 // -------------------------------------------------
@@ -702,4 +721,43 @@ async function updateClanImage(clan_id,form){
             rej(error);
         })
     });
+}
+
+async function deleteSamurai(samurai_id){
+    let delButton = $(`#delete-button-samurai-${samurai_id}`);
+    let delModal = $(`#samurai_delete_modal_${samurai_id}`);
+    delButton.html('<i class="fas fa-spinner fa-pulse""></i>');
+    delButton.attr('disabled', true);
+    jQuery.ajax({
+        //url: `https://blockchainsamurai.io/api/samurai/${samurai_id}`,
+        //method: "DELETE"
+    }).then(async response => {
+        delModal.modal('hide');
+        delButton.html(`
+            <span class="text">Samurai already deleted</span>
+        `);
+        jQuery.notify(
+            {title: 'Samurai Deleted', message: `Samurai id: ${samurai_id} was successfully deleted. Refresh page to see changes`, icon:'fas fa-check-circle'},
+              {
+                type: 'success',
+                delay: 5000,
+            }
+        );
+    }).catch(error => {
+        jQuery.notify(
+            {title: 'Error Deleting Samurai', message: `Failed to delete samurai id: ${samurai_id}. Check console log for more info.`, icon:'fas fa-exclamation-circle'},
+              {
+                type: 'danger',
+                delay: 10000,
+            }
+        );
+        delButton.html(`
+            <span class="icon text-white-50">
+                <i class="fas fa-trash-alt"></i>
+            </span>
+            <span class="text">Retry</span>
+        `);
+        delButton.removeAttr('disabled');
+        delModal.modal('hide');
+    })
 }
